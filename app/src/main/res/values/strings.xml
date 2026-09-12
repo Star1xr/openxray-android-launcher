@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">OpenXRay</string>
+    <string name="game_dir_not_selected">Oyun dizini secilmedi</string>
+    <string name="select_dir">Dizin Sec</string>
+    <string name="play">OYNA</string>
+    <string name="dir_read_error">Dizin okunamadi</string>
 </resources>

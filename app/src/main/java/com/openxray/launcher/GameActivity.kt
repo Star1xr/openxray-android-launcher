@@ -9,13 +9,11 @@ import org.libsdl.app.SDLActivity
 class GameActivity : SDLActivity() {
 
     private var gamePath: String = ""
-    private var gameMode: String = PrefsManager.MODE_COC
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         gamePath = intent.getStringExtra("gamePath") ?: ""
-        gameMode = intent.getStringExtra("gameMode") ?: PrefsManager.MODE_COC
 
         hideSystemUI()
     }
@@ -23,7 +21,7 @@ class GameActivity : SDLActivity() {
     override fun getArguments(): Array<String> {
         return arrayOf(
             "-fsltx", "$gamePath/fsgame.ltx",
-            gameMode
+            PrefsManager.MODE_COC
         )
     }
 
@@ -32,8 +30,6 @@ class GameActivity : SDLActivity() {
     }
 
     override fun onBackPressed() {
-        // Oyundan çıkış için back tuşu devre dışı
-        // SDL kendi handle edecek
     }
 
     private fun hideSystemUI() {

@@ -4,8 +4,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
-import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -16,7 +14,6 @@ class LauncherActivity : AppCompatActivity() {
     private lateinit var prefs: PrefsManager
     private lateinit var tvPath: TextView
     private lateinit var btnPlay: Button
-    private lateinit var rgGameMode: RadioGroup
 
     private val folderPickerLauncher = registerForActivityResult(
         ActivityResultContracts.OpenDocumentTree()
@@ -34,7 +31,6 @@ class LauncherActivity : AppCompatActivity() {
 
         tvPath = findViewById(R.id.tvPath)
         btnPlay = findViewById(R.id.btnPlay)
-        rgGameMode = findViewById(R.id.rgGameMode)
 
         val btnSelectFolder = findViewById<Button>(R.id.btnSelectFolder)
         btnSelectFolder.setOnClickListener {
@@ -60,7 +56,7 @@ class LauncherActivity : AppCompatActivity() {
             tvPath.text = path
             btnPlay.isEnabled = true
         } else {
-            Toast.makeText(this, "Dizin okunamadı", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.dir_read_error, Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -77,29 +73,15 @@ class LauncherActivity : AppCompatActivity() {
         if (prefs.isConfigured()) {
             tvPath.text = prefs.gamePath
             btnPlay.isEnabled = true
-
-            when (prefs.gameMode) {
-                PrefsManager.MODE_COC -> rgGameMode.check(R.id.rbCoc)
-                PrefsManager.MODE_CS -> rgGameMode.check(R.id.rbCs)
-                PrefsManager.MODE_SOC -> rgGameMode.check(R.id.rbSoc)
-            }
         } else {
-            tvPath.text = "Oyun dizini seçilmedi"
+            tvPath.text = getString(R.string.game_dir_not_selected)
             btnPlay.isEnabled = false
         }
     }
 
     private fun launchGame() {
-        val gameMode = when (rgGameMode.checkedRadioButtonId) {
-            R.id.rbCs -> PrefsManager.MODE_CS
-            R.id.rbSoc -> PrefsManager.MODE_SOC
-            else -> PrefsManager.MODE_COC
-        }
-        prefs.gameMode = gameMode
-
         val intent = Intent(this, GameActivity::class.java).apply {
             putExtra("gamePath", prefs.gamePath)
-            putExtra("gameMode", gameMode)
         }
         startActivity(intent)
     }

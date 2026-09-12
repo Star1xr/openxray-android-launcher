@@ -20,7 +20,7 @@
         android:id="@+id/tvPath"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Oyun dizini seçilmedi"
+        android:text="@string/game_dir_not_selected"
         android:textColor="#FFCCCCCC"
         android:textSize="14sp"
         android:gravity="center"
@@ -32,56 +32,15 @@
         android:id="@+id/btnSelectFolder"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:text="Dizin Seç"
+        android:text="@string/select_dir"
         android:textSize="16sp"
         android:layout_marginBottom="32dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Oyun Seç"
-        android:textColor="#FFCCCCCC"
-        android:textSize="16sp"
-        android:layout_marginBottom="12dp" />
-
-    <RadioGroup
-        android:id="@+id/rgGameMode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="32dp">
-
-        <RadioButton
-            android:id="@+id/rbCoc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Call of Chernobyl"
-            android:textColor="#FFCCCCCC"
-            android:checked="true"
-            android:layout_marginBottom="8dp" />
-
-        <RadioButton
-            android:id="@+id/rbCs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Clear Sky"
-            android:textColor="#FFCCCCCC"
-            android:layout_marginBottom="8dp" />
-
-        <RadioButton
-            android:id="@+id/rbSoc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Shadow of Chernobyl"
-            android:textColor="#FFCCCCCC" />
-
-    </RadioGroup>
 
     <Button
         android:id="@+id/btnPlay"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:text="OYNA"
+        android:text="@string/play"
         android:textSize="20sp"
         android:textStyle="bold"
         android:enabled="false" />
