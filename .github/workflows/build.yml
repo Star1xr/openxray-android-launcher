@@ -1,0 +1,50 @@
+name: Android Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout launcher
+        uses: actions/checkout@v4
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Check native libs
+        run: |
+          if [ ! -f app/src/main/jniLibs/arm64-v8a/libSDL2.so ] || [ ! -f app/src/main/jniLibs/arm64-v8a/libxr_3da.so ]; then
+            echo "WARNING: .so dosyalari jniLibs/arm64-v8a/ icinde bulunamadi"
+            echo "Manuel olarak koyun veya engine CI'dan indirin:"
+            echo "  - libSDL2.so (SDL2 build)"
+            echo "  - libxr_3da.so (xray-16-android build)"
+            echo "APK bos .so'larla derlenecek"
+          fi
+
+      - name: Build APK
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleRelease
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: openxray-android
+          path: app/build/outputs/apk/release/*.apk
+          if-no-files-found: error

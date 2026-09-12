@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp"
+    android:background="#FF1A1A2E">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="28sp"
+        android:textColor="#FFE94560"
+        android:textStyle="bold"
+        android:layout_marginBottom="48dp" />
+
+    <TextView
+        android:id="@+id/tvPath"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Oyun dizini seçilmedi"
+        android:textColor="#FFCCCCCC"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:background="#FF16213E"
+        android:padding="16dp"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btnSelectFolder"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Dizin Seç"
+        android:textSize="16sp"
+        android:layout_marginBottom="32dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Oyun Seç"
+        android:textColor="#FFCCCCCC"
+        android:textSize="16sp"
+        android:layout_marginBottom="12dp" />
+
+    <RadioGroup
+        android:id="@+id/rgGameMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="32dp">
+
+        <RadioButton
+            android:id="@+id/rbCoc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Call of Chernobyl"
+            android:textColor="#FFCCCCCC"
+            android:checked="true"
+            android:layout_marginBottom="8dp" />
+
+        <RadioButton
+            android:id="@+id/rbCs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clear Sky"
+            android:textColor="#FFCCCCCC"
+            android:layout_marginBottom="8dp" />
+
+        <RadioButton
+            android:id="@+id/rbSoc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shadow of Chernobyl"
+            android:textColor="#FFCCCCCC" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnPlay"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="OYNA"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:enabled="false" />
+
+</LinearLayout>

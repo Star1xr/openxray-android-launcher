@@ -1,0 +1,8 @@
+# SDL2 JNI bindings - bu dosyaları SDL2 build çıktısından kopyalayın
+# Gerekli dosyalar:
+# - libSDL2.so (SDL2 Android build)
+# - libxr_3da.so (CMake build çıktısı)
+#
+# Kopyalama:
+# cp path/to/libSDL2.so app/src/main/jniLibs/arm64-v8a/
+# cp path/to/libxr_3da.so app/src/main/jniLibs/arm64-v8a/
