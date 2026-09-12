@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId = "com.openxray.stalker"
         minSdk = 29
-        targetSdk = 34
+        targetSdk = 29
         versionCode = 1
         versionName = "1.0"
     }
